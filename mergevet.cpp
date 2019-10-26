@@ -58,9 +58,38 @@ void bubble_sort (int *vet,int *n)
 	}
 }
 
+void merge(int *vet1,int *vet2,int *n)
+{
+	int i,j,k,C[2*MAX_VET];
+	
+	for(i=0,j=0,k=0;i<*n&&j<*n;i++,j++,k++)
+		{
+			if(vet1[i]!=vet2[j])
+			{
+				if(vet1[i]<vet2[j])
+				{
+					C[k]=vet1[i];
+					j--;
+				}
+				else
+				{
+					C[k]=vet2[j];
+					i--;
+				}
+				printf("Valore nuovo vettore: %d,\n",C[k]);	
+			}
+			else
+			{
+				C[k]=vet1[i];
+				printf("Valore nuovo vettore: %d,\n",C[k]);
+			}
+		}
+}
+
+
 int main () {
 	
-	int A[MAX_VET],B[MAX_VET],C[2*MAX_VET],i,j,k,n,m;
+	int A[MAX_VET],B[MAX_VET],i,j,k,n,m;
 	
 	printf("Inserire dimensione dei vettori principali:\n");
 	scanf("%d",&n);
@@ -68,25 +97,6 @@ int main () {
 	carica_vet(A,B,n);
 	bubble_sort(A,&n);
 	bubble_sort(B,&n);
-	
-	i=0;
-	j=0;
-	k=0;
-	
-	while(i<n||j<n)
-	{
-		if(A[i]<B[j])
-		{
-			C[k]=A[i];
-			i++;
-		}
-		else
-		{
-			C[k]=B[j];
-			j++;
-		}
-		printf("Valore nuovo vettore: %d,\n",C[k]);
-		k++;
-	}
+	merge(A,B,&n);
 }
 
