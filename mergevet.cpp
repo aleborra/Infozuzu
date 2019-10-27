@@ -17,16 +17,6 @@ void carica_vet(int A[],int B[],int n)
 	}
 }
 
-void stampa_vet(int *vet,int *n)
-{
-	int i;
-	
-	for(i=0;i<*n;i++) 
-	{
-		printf("%d, ",vet[i]);
-	}
-}
-
 void scambia_int(int *ptra,int *ptrb) 
 {
 	
@@ -88,7 +78,7 @@ void merge(int *vet1,int *vet2,int *n)
 
 int main () {
 	
-	int A[MAX_VET],B[MAX_VET],i,j,k,n,m;
+	int A[MAX_VET],B[MAX_VET],n;
 	
 	printf("Inserire dimensione dei vettori principali:\n");
 	scanf("%d",&n);
