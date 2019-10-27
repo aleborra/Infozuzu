@@ -86,7 +86,6 @@ void merge(int *vet1,int *vet2,int *n)
 		}
 }
 
-
 int main () {
 	
 	int A[MAX_VET],B[MAX_VET],i,j,k,n,m;
@@ -99,4 +98,3 @@ int main () {
 	bubble_sort(B,&n);
 	merge(A,B,&n);
 }
-
