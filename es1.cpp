@@ -23,9 +23,9 @@ int cerca_e_sos(char str[MAX_VET][MAX_STR],int n,char str2[MAX_VET][MAX_STR],cha
 	j=0;
 	*q='*';
 	
-	while(j<n)
-	{
-		for(i=0;i<n;i++)
+	for(i=0;i<n;i++)
+        {
+		for(j=0;j<n;j++)
 		{	
 			if(strcmp(str[j],str2[i])==0)
 			{
@@ -37,8 +37,7 @@ int cerca_e_sos(char str[MAX_VET][MAX_STR],int n,char str2[MAX_VET][MAX_STR],cha
 			{
 				printf("%s",str[j]);
 			}
-		}
-		j++;
+                 }
 	}
 }
 
