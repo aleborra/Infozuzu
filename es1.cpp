@@ -27,15 +27,14 @@ int cerca_e_sos(char str[MAX_VET][MAX_STR],int n,char str2[MAX_VET][MAX_STR],cha
         {
 		for(j=0;j<n;j++)
 		{	
-			if(strcmp(str[j],str2[i])==0)
+			if(strcmp(str[i],str2[j])==0)
 			{
-				strcpy(str[j],q);
-				printf("%s",str[j]);
-				j++;
+				strcpy(str[i],q);
+				printf("%s",str[i]);
 			}
 			else
 			{
-				printf("%s",str[j]);
+				printf("%s",str[i]);
 			}
                  }
 	}
