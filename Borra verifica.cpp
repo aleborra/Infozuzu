@@ -2,7 +2,7 @@
 maim e caricamento 18
 conta 0
 ordina 20
-elimina non c'è
+elimina non c'Ã¨
 Totale 38
 */
 
@@ -11,7 +11,7 @@ Totale 38
 #define MAX_VET 100
 #define MAX_STR 100
 
-  //char *el;			// no, dichiarato così non è un vettore
+  //char *el;			// no, dichiarato cosÃ¬ non Ã¨ un vettore
 
 void carica_str(char piatto[MAX_VET][MAX_STR],int n)
 {
@@ -76,21 +76,45 @@ void conta(char piatto[MAX_VET][MAX_STR],/*char *el,*/char el[MAX_STR], int n)
 	
 	for(j=0;j<n;j++)
 	{
-		if(strstr(piatto[j],el)!=NULL)				// non è una strcmp la funzione da usare
+		if(strstr(piatto[j],el)!=NULL)				// non Ã¨ una strcmp la funzione da usare
 			conta++;
 	}
-	printf("%s compare %d volte",el,conta);
+	printf("\n%s compare %d volte\n\n",el,conta);
 }
 
-void elimina(char piatto[MAX_VET][MAX_STR],char sost[MAX_STR])
+void elimina(char piatto[MAX_VET][MAX_STR],char sost[MAX_STR],int *n)
 {
-	int i;
+	int i,j,k,med,trovato;
 	
-	for(i=pos;i<*n-1;i++)
+	i=0;
+	j=*n-1;     
+	trovato=0;
+	
+	while(!trovato&&i<=j)
 	{
-		strcpy(str[i],str[i+1]);
+		med=(i+j)/2;
+		if(strcmp(piatto[med],sost)==0)
+		{
+			trovato=1;
+			k=med;
+		}
+		else
+			if(strcmp(piatto[med],sost)>0)   
+				j=med-1;	
+			else
+				i=med+1;
 	}
-	*n-1;
+	
+	printf("\nMenu' corretto come segue:\n\n");
+	
+	if(trovato)
+	{
+		for(i=k;i<*n-1;i++)
+		{
+			strcpy(piatto[i],piatto[i+1]);
+			printf("%s\n",piatto[i]);
+		}
+	}
 }
 
 int main () {
@@ -105,17 +129,19 @@ int main () {
   scanf("%d",&n);
   
   //carica_str(piatto,n);
-  carica_str(piatto,n);		// se è globale non serve passarla come parametro
+  carica_str(piatto,n);		// se Ã¨ globale non serve passarla come parametro
   
   printf("\nQuale parolola vuoi cercare:\n");
   scanf("%s",el);
   conta(piatto,el,n);				// manca richiamo a conta
   
   bubble_sort(piatto,n);
+  
+  printf("Menu' ordinato come segue:\n");
   stampa_str(piatto,n);
   
   getchar();
-  printf("Inserire piatto da eliminare dal menù");
+  printf("\n\nInserire piatto da eliminare dal menu':\n");
   gets(sost);
-  elimina(piatto,n,sost);
+  elimina(piatto,sost,&n);
 }
