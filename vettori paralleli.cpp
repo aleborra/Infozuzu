@@ -54,7 +54,7 @@ void stampa_str(char str[MAX_VET][MAX_STR],float prezzi[MAX_VET],int n)
 	
 	for(i=0;i<n;i++)
 	{
-		printf("%s     %.2f euro\n", str[i],prezzi[i]);
+		printf("%s   %.2f euro\n", str[i],prezzi[i]);
 	}
 	
 }
@@ -97,12 +97,12 @@ void compare_str(char str[MAX_VET][MAX_STR], char controllare[MAX_STR],  int n)
 			cont++;
 	}
 	
-	printf("Ci sono %d piatti simili \n", cont);
+	printf("\n%s compare %d volte\n\n",controllare,cont);
 }
 
 
 
-void shift_sx(char str[MAX_VET][MAX_STR], int *n, char togliere[MAX_STR])
+void shift_sx(char str[MAX_VET][MAX_STR], int *n, char togliere[MAX_STR],float prezzi[MAX_VET])
 {
 	int i, tmp; 
 	
@@ -117,12 +117,13 @@ void shift_sx(char str[MAX_VET][MAX_STR], int *n, char togliere[MAX_STR])
 		for(i=tmp;i<*n;i++)
 		{
 			strcpy(str[i],str[i+1]);
+			prezzi[i]=prezzi[i+1];
 		}
 	}
 }
 
 
-void carica_str(char str[MAX_VET][MAX_STR],float prezzi[MAX_VET],int n)                  //qui è aggiunto il prezzo
+void carica_str(char str[MAX_VET][MAX_STR],float prezzi[MAX_VET],int n)                  //qui Ã¨ aggiunto il prezzo
 {
 	int i;
 	
@@ -150,25 +151,25 @@ int main (){
 	printf("\n");
 	
 	carica_str(str,prezzi,n);
-	stampa_str(str,prezzi,n);
 	
 	bubble_sort(str,prezzi,n);
 	
-	stampa_str(str, n);	
+	printf("Menu' ordinato come segue:\n");
+	stampa_str(str,prezzi,n);	
 	
 	printf("\n");
-	printf("Quale pietanza vuoi controllare? \n");
+	printf("\nQuale piatto si vuole controllare?\n");
 	scanf("%s", controllare);
 	compare_str(str, controllare, n);
 	
 	getchar();
 	printf("\n");
-	printf("Quale piatto vuoi togliere:\n");
+	printf("\n\nInserire piatto da eliminare dal menu':\n");
 	gets(togliere);
 	
-	shift_sx(str, &n, togliere);
+	shift_sx(str, &n, togliere,prezzi);
 	n=n-1;
 	
 	printf("\n");
-	stampa_str(str, n);
+	stampa_str(str,prezzi,n);
 }
