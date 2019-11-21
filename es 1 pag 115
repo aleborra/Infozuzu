@@ -1,0 +1,104 @@
+#include<stdio.h>
+#include<string.h>
+#define MAX_VET 100
+#define MAX_STR 100
+
+void carica_str(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char sez[MAX_VET][MAX_STR],int Classi[MAX_VET],int n)                  
+{
+	int i;
+	
+	for(i=0;i<n;i++)
+	{
+		getchar();
+		printf("\nInserisci il cognome:\n");
+		gets(Cognomi[i]);
+		printf("\n");
+		
+		printf("Inserisci il nome:\n");
+		gets(Nomi[i]);
+		printf("\n");
+		
+		printf("Inserisci la classe:\n");
+		scanf("%d",&Classi[i]);
+		printf("\n");
+		
+		getchar();
+		printf("Inserisci la sezione:\n");
+		gets(sez[i]);
+	}	
+}
+
+void scambia_int(int *ptra,int *ptrb) 
+{
+	
+	int dep;
+	dep=*ptra;
+	*ptra=*ptrb;
+	*ptrb=dep;
+}
+
+void scambia_str(char *str1,char *str2) 
+{
+	
+	char dep[MAX_STR];
+	
+	strcpy(dep,str1);
+	strcpy(str1,str2);
+	strcpy(str2,dep);
+}
+
+int cerca(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char sez[MAX_VET][MAX_STR],int Classi[MAX_VET],int n,int c)     
+{
+	int i;
+	
+	for(i=0;i<n;i++)
+	{
+		if(Classi[i]==c)
+		{
+			printf("\n%s %s  sezione %s\n\n",Cognomi[i],Nomi[i],sez[i]);
+		}
+	}
+}
+
+void bubble_sort (char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char sez[MAX_VET][MAX_STR],int Classi[MAX_VET],int n) 
+{	
+	int i,j,scambio;
+	
+	i=n-1;
+	scambio=1;
+	
+	while(scambio==1&&i>0)        
+	{
+		scambio=0;
+		for(j=0;j<i;j++) 
+		{
+			if(Classi[j]<Classi[j+1])
+			{
+				scambia_str(Cognomi[j],Cognomi[j+1]);
+				scambia_str(Nomi[j],Nomi[j+1]);
+				scambia_int(&Classi[j],&Classi[j+1]);
+				scambia_str(sez[j],sez[j+1]);
+				scambio=1;	
+			}
+		}
+		i--;
+	}
+}
+
+int main () {
+	
+	char Cognomi[MAX_VET][MAX_STR],Nomi[MAX_VET][MAX_STR],sez[MAX_VET][MAX_STR];
+	int n,Classi[MAX_VET],c;
+	
+	printf("Quanti dati vuoi inserire?\n");
+	scanf("%d",&n);
+	carica_str(Cognomi,Nomi,sez,Classi,n);
+	
+	bubble_sort(Cognomi,Nomi,sez,Classi,n);
+	
+	printf("\nInserire classe da cercare:\n");
+	scanf("%d",&c);
+	
+	printf("\nStudenti che frequentano la classe %d:\n",c);
+	cerca(Cognomi,Nomi,sez,Classi,n,c);
+}
