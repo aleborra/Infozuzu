@@ -6,10 +6,10 @@
 void carica_str(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char sez[MAX_VET][MAX_STR],int Classi[MAX_VET],int n)                  
 {
 	int i;
-	
+
+	getchar();	
 	for(i=0;i<n;i++)
 	{
-		getchar();
 		printf("\nInserisci il cognome:\n");
 		gets(Cognomi[i]);
 		printf("\n");
@@ -49,13 +49,18 @@ void scambia_str(char *str1,char *str2)
 
 int cerca(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char sez[MAX_VET][MAX_STR],int Classi[MAX_VET],int n,int c)     
 {
-	int i;
+	int i,cont=0;
 	
 	for(i=0;i<n;i++)
 	{
 		if(Classi[i]==c)
 		{
 			printf("\n%s %s  sezione %s\n\n",Cognomi[i],Nomi[i],sez[i]);
+			cont++;
+			
+			if(cont=!0)
+				break;
+			
 		}
 	}
 }
