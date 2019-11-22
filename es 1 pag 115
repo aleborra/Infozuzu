@@ -60,8 +60,9 @@ int cerca(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char sez[MA
 			
 			if(cont=!0)
 				break;
-			
 		}
+		else
+			printf("Nessun alunno trovato nella classe %d\n",Classi[i]);
 	}
 }
 
