@@ -132,6 +132,6 @@ int main () {
 	scanf("%s", c);
 	
 	printf("\nStudenti che frequentano la classe %s:\n",c);
-	cerca(Cognomi,Nomi,Classi,c,c2,n2,n);
+	cerca(Cognomi,Nomi,Classi,c,c2,n2,n,j);
 	stampa_str(c2,n2,j);
 }
