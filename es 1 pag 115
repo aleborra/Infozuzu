@@ -66,31 +66,33 @@ int cerca(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char sez[MA
 	}
 }
 
-void bubble_sort (char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char sez[MAX_VET][MAX_STR],int Classi[MAX_VET],int n) 
+void bubble_sort(char nomi[MAX_VET][MAX_STR], char cognomi[MAX_VET][MAX_STR], char classe[MAX_VET][MAX_STR], int n) 
 {	
 	int i,j,scambio;
 	
-	i=n-1;
+	i=(n-1);
 	scambio=1;
 	
-	while(scambio==1&&i>0)        
+	while(i>0)        
 	{
 		scambio=0;
 		for(j=0;j<i;j++) 
 		{
-			if(Classi[j]<Classi[j+1])
+			if(strcmp(classe[j],classe[j+1])>0)
 			{
-				scambia_str(Cognomi[j],Cognomi[j+1]);
-				scambia_str(Nomi[j],Nomi[j+1]);
-				scambia_int(&Classi[j],&Classi[j+1]);
-				scambia_str(sez[j],sez[j+1]);
+				scambia_str(classe[j],classe[j+1]);
+				scambia_str(nomi[j],nomi[j+1]);
+				scambia_str(cognomi[j],cognomi[j+1]);
 				scambio=1;	
 			}
 		}
+		
 		i--;
+		
+		if (scambio == 0) 
+       			break; 
 	}
 }
-
 int main () {
 	
 	char Cognomi[MAX_VET][MAX_STR],Nomi[MAX_VET][MAX_STR],sez[MAX_VET][MAX_STR];
