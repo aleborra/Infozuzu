@@ -81,9 +81,11 @@ void stampa_str(char c2[MAX_VET][MAX_STR],char n2[MAX_VET][MAX_STR],int n)
 	}
 }
 
-void cerca(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char Classi[MAX_VET][MAX_STR],char c[MAX_STR],char c2[MAX_VET][MAX_STR],char n2[MAX_VET][MAX_STR],int n)     
+void cerca(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char Classi[MAX_VET][MAX_STR],char c[MAX_STR],char c2[MAX_VET][MAX_STR],char n2[MAX_VET][MAX_STR],int n,int j)     
 {
-	int i,j=0,k;
+	int i,k;
+	
+	j=0;
 	
 	for(i=0;i<n;i++)
 	{
@@ -113,13 +115,12 @@ void cerca(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char Class
 			}
 		}
 	}
-	stampa_str(c2,n2,j);
 }
 
 int main () {
 	
 	char Cognomi[MAX_VET][MAX_STR],Nomi[MAX_VET][MAX_STR],Classi[MAX_VET][MAX_STR],c[MAX_STR],c2[MAX_VET][MAX_STR],n2[MAX_VET][MAX_STR];
-	int n;
+	int n,j;
 	
 	printf("Quanti dati vuoi inserire?\n");
 	scanf("%d",&n);
@@ -132,4 +133,5 @@ int main () {
 	
 	printf("\nStudenti che frequentano la classe %s:\n",c);
 	cerca(Cognomi,Nomi,Classi,c,c2,n2,n);
+	stampa_str(c2,n2,j);
 }
