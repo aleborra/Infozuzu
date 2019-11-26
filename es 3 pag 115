@@ -71,11 +71,11 @@ void bubble_sort(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char
 	}
 }
 
-void stampa_str(char c2[MAX_VET][MAX_STR],char n2[MAX_VET][MAX_STR],int n)
+void stampa_str(char c2[MAX_VET][MAX_STR],char n2[MAX_VET][MAX_STR],int j)
 {
 	int i;
 	
-	for(i=0;i<n;i++) 
+	for(i=0;i<j;i++) 
 	{
 		printf("\n%s %s\n\n",c2[i],n2[i]);
 	}
@@ -103,6 +103,7 @@ void cerca(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char Class
 		if(strcmp(c2[k],c2[k+1])>0)
 		{
 			scambia_str(c2[k],c2[k+1]);
+			scambia_str(n2[k],n2[k+1]);
 		}
 		else
 		{
@@ -115,6 +116,7 @@ void cerca(char Cognomi[MAX_VET][MAX_STR],char Nomi[MAX_VET][MAX_STR],char Class
 			}
 		}
 	}
+		stampa_str(c2,n2,j);
 }
 
 int main () {
@@ -133,5 +135,5 @@ int main () {
 	
 	printf("\nStudenti che frequentano la classe %s:\n",c);
 	cerca(Cognomi,Nomi,Classi,c,c2,n2,n,j);
-	stampa_str(c2,n2,j);
+
 }
