@@ -23,6 +23,6 @@ int main () {
 		if(p==NULL)
   			printf("\n\n\n\n\n\nZUZU.EXE HA SMESSO DI FUNZIONARE\n\n\n\n\n\n\n");
   		else
-  			printf("\n\n\n\nFILE NOT FOUND (404)\n\n\n\n\n\n\n\n");
+  			printf("\n\n\n\nFILE NOT FOUND (error 404)\n\n\n\n\n\n\n\n");
 	}
 }
